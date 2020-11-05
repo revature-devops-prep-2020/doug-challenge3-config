@@ -16,6 +16,7 @@ az aks create --resource-group devOpsGroup --name devOpsCluster --node-count 1
 Now you can load your credentials into you .kube config by running this command
 ```
 az aks get-credentials --resource-group devOpsGroup --name devOpsCluster
+```
 
 This will take a few minutes to complete.
 
