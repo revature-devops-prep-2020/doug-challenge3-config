@@ -21,11 +21,11 @@ spec:
           image: dougliu/jenkins3:latest
           resources:
             limits:
-              cpu: 1000m
-              memory: 3000Mi
+              cpu: 1500m
+              memory: 2000Mi
             requests:
-              cpu: 2000m
-              memory: 3000Mi
+              cpu: 1000m
+              memory: 1000Mi
           ports:
             - name: http-port
               containerPort: 8080
