@@ -1,0 +1,45 @@
+---
+##### Creating the deployment
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: jenkins
+  namespace: devops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: master
+  template:
+    metadata:
+      labels:
+        app: master
+        tooltype: jenkins
+    spec:
+      containers:
+        - name: jenkins
+          image: dougliu/jenkins3:latest
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 3000Mi
+            requests:
+              cpu: 2000m
+              memory: 3000Mi
+          ports:
+            - name: http-port
+              containerPort: 8080
+            - name: jnlp-port
+              containerPort: 50000
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home
+            - mountPath: /var/run 
+              name: docker-sock 
+      volumes:
+        - name: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-data
+        - name: docker-sock 
+          hostPath: 
+            path: /var/run 

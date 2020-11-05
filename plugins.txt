@@ -2,11 +2,10 @@ docker-plugin
 docker-workflow
 git
 github
-gradle
 kubernetes-cli
 pipeline-model-definition
 pipeline-stage-step
 workflow-aggregator
 sonar
 slack
-nodejs
+python

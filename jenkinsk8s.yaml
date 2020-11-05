@@ -54,27 +54,6 @@ subjects:
   - kind: ServiceAccount
     name: jenkins-robot
     namespace: devops
-
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: jenkins-robot
-  namespace: devops
-
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-    name: jenkins-admin
-roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: jenkins-robot
-    namespace: devops
     
 ---
 ##### Creating the deployment
@@ -96,7 +75,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: dougliu/jenkins2:latest
+          image: dougliu/jenkins3:latest
           resources:
             limits:
               cpu: 1000m
