@@ -1,20 +1,18 @@
+##### Creating the volume and volum claim
 ---
-#### Creating the volume for data persistence
-apiVersion: v1
-kind: PersistentVolume
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  name: jenkins-home
+  name: jenkins-storage
   namespace: devops
-spec:
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 2Gi
-  hostPath:
-    path: /data/jenkins-home/
-    
+provisioner: kubernetes.io/azure-disk
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Delete
+parameters:
+  storageaccounttype: StandardSSD_LRS
+  kind: Managed
+
 ---
-##### Creating the volume claim
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -23,6 +21,7 @@ metadata:
 spec:
     accessModes:
     - ReadWriteOnce
+    storageClassName: jenkins-storage
     resources:
         requests:
-            storage: 2Gi
+            storage: 30Gi

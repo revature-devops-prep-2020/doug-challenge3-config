@@ -7,16 +7,15 @@ You will need to have a Azure CLI already configurated to use these commands. Si
 To set up the Azure infrastructure, we will need to create resource groyps
 
 ```
-az group create --name devOps3 --location eastus
+az group create --name devOpsGroup3 --location eastus
 ```
 Once this is completed, you can create a cluster by using 
 ```
-az aks create --resource-group devOps3 --name devOpsCluster --node-count 2 \
---generate-ssh-keys
+az aks create --resource-group devOpsGroup3 --name Challenge3 --node-count 2 --node-vm-size Standard_B2s --generate-ssh-keys
 ```
 Now you can load your credentials into you .kube config by running this command
 ```
-az aks get-credentials --resource-group devOps3 --name devOpsCluster
+az aks get-credentials --resource-group devOpsGroup3 --name Challenge3
 ```
 
 This will take a few minutes to complete.
@@ -69,5 +68,5 @@ Now your Jenkins configuration should be up and running. Congrats!
 # Deleting
 You may want to delete deployment and services first based on your perferences. But if you want to shut down the whole infrausture by deleting the whole resource group, use 
 ```
-az group delete --name devOpsGroup
+az group delete --name devOpsGroup3
 ```

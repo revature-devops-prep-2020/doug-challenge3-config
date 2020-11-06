@@ -19,23 +19,24 @@ spec:
       containers:
         - name: jenkins
           image: dougliu/jenkins3:latest
-          resources:
-            limits:
-              cpu: 1500m
-              memory: 2000Mi
-            requests:
-              cpu: 1000m
-              memory: 1000Mi
+          # resources:
+          #   limits:
+          #     cpu: 1500m
+          #     memory: 2000Mi
+          #   requests:
+          #     cpu: 1000m
+          #     memory: 1000Mi
           ports:
             - name: http-port
               containerPort: 8080
-            - name: jnlp-port
-              containerPort: 50000
+            # - name: jnlp-port
+            #   containerPort: 50000
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
-            - mountPath: /var/run 
-              name: docker-sock 
+            - name: docker-sock   
+              mountPath: /var/run  
+                            
       volumes:
         - name: jenkins-home
           persistentVolumeClaim:
