@@ -76,6 +76,13 @@ spec:
       containers:
         - name: jenkins
           image: dougliu/jenkins3:latest
+          resources:
+            limits:
+              cpu: 1500m
+              memory: 2000Mi
+            requests:
+              cpu: 1000m
+              memory: 1000Mi
           ports:
             - name: http-port
               containerPort: 8080

@@ -7,15 +7,16 @@ You will need to have a Azure CLI already configurated to use these commands. Si
 To set up the Azure infrastructure, we will need to create resource groyps
 
 ```
-az group create --name devOpsGroup --location eastus
+az group create --name devOps3 --location eastus
 ```
 Once this is completed, you can create a cluster by using 
 ```
-az aks create --resource-group devOpsGroup --name devOpsCluster --node-count 1
+az aks create --resource-group devOps3 --name devOpsCluster --node-count 2 \
+--generate-ssh-keys
 ```
 Now you can load your credentials into you .kube config by running this command
 ```
-az aks get-credentials --resource-group devOpsGroup --name devOpsCluster
+az aks get-credentials --resource-group devOps3 --name devOpsCluster
 ```
 
 This will take a few minutes to complete.
