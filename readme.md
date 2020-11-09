@@ -7,11 +7,11 @@ You will need to have a Azure CLI already configurated to use these commands. Si
 To set up the Azure infrastructure, we will need to create resource groyps
 
 ```
-az group create --name devOpsGroup3 --location eastus
+az group create --name devOpsGroup3 --location westus
 ```
 Once this is completed, you can create a cluster by using 
 ```
-az aks create --resource-group devOpsGroup3 --name Challenge3 --node-count 2 --node-vm-size Standard_B2s --generate-ssh-keys
+az aks create --resource-group devOpsGroup3 --name Challenge3 --node-count 2 --node-vm-size Standard_B2s
 ```
 Now you can load your credentials into you .kube config by running this command
 ```
@@ -33,7 +33,7 @@ This step will help with setting up 'namespace', 'volume', 'deployment', 'load-b
 Make sure to update the name of your docker image in the yaml file, under deployment before procceding.
 
 ```
-kubectl apply -f jenkinsk8s.yaml
+kubectl apply -f kube/
 ```
 
 # View Important Data
