@@ -49,6 +49,11 @@ kubectl -n devops get serviceaccount jenkins-robot -o go-template --template='{{
 kubectl -n devops get secrets SERVICEACCOUNT -o go-template --template '{{index .data "token"}}' | base64 -d
 ```
 
+To get the Token for accessing dashboard, use
+```
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+```
+
 If you want to check your context, you can simply go to your user\ .kube\config, to get your Kubernetes master  server url, simply use
 
 ```
@@ -64,6 +69,13 @@ kubectl get services -n devops
 Make sure to add the port number so that you can access the jenkins server.
 
 Now your Jenkins configuration should be up and running. Congrats!
+
+To access your k8s dashboard, use
+```
+kubectl proxy
+```
+Then insert your proxy followed by: '/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.'
+
 
 # Deleting
 You may want to delete deployment and services first based on your perferences. But if you want to shut down the whole infrausture by deleting the whole resource group, use 
