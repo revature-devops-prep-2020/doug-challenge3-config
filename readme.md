@@ -76,6 +76,10 @@ kubectl proxy
 ```
 Then insert your proxy followed by: '/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.'
 
+Since you are also running this on Azure, you can skip the step and just use
+```
+az aks browse -g devOpsGroup3 -n challenge3
+```
 
 # Deleting
 You may want to delete deployment and services first based on your perferences. But if you want to shut down the whole infrausture by deleting the whole resource group, use 
