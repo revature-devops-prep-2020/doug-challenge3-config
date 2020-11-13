@@ -75,7 +75,7 @@ To access your k8s dashboard, use
 ```
 kubectl proxy
 ```
-Then insert your proxy followed by: '/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.'
+Then insert your proxy followed by: 'localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.'
 
 Since you are also running this on Azure, you can skip the step and just use
 ```
