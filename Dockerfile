@@ -1,10 +1,15 @@
 FROM jenkins/jenkins:lts-jdk11
 
 ENV JENKINS_HOME /var/jenkins_home
-ARG JAVA_OPTS
+ENV CASC_JENKINS_CONFIG /var/jenkins_conf
+ENV DOCKERVERSION=19.03.8
+
+#Disable Setup
 ENV JAVA_OPTS "-Djenkins.install.runSetupWizard=false ${JAVA_OPTS:-}"
-ENV CASC_JENKINS_CONFIG "/usr/share/jenkins/ref/"
-ENV DOCKERVERSION=18.03.1-ce
+
+#Username and passowrd
+ENV JENKINS_USER admin
+ENV JENKINS_PASS admin
 
 #Install Docker
 USER root
