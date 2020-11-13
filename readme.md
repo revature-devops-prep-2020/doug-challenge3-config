@@ -26,6 +26,7 @@ You may want to build and push your own Jenkins image, to do so
 docker build -t yourdockeruser/yourjenkinsimage .
 docker push yourdockeruser/yourjenkinsimage
 ```
+Note, the username and password to Jenkins login is 'admin'
 
 # Kubernetes Deployment
 This step will help with setting up 'namespace', 'volume', 'deployment', 'load-balancer', 'service accounts', 'cluster rolebindings' and many more configuration with one command.
